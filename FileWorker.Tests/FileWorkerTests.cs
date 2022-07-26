@@ -1,12 +1,14 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit;
+using NUnit.Framework;
 
 namespace FileWorker.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class FileWorkerTests
     {
-        [TestMethod]
+        [Test]
         public void FileNameMustConsistOfCorrectChars()
         {
             string incorrect = @"couple'`/#?words$%,./*/+with,./1234?><=""delimeters";
@@ -14,7 +16,7 @@ namespace FileWorker.Tests
             var fileWorker = new FileWorker();
 
             PrivateObject privateObject = new PrivateObject(fileWorker);
-            Assert.AreEqual(expected, privateObject.Invoke("GetSafeFilename", incorrect));
+            NUnit.Framework.Assert.AreEqual(expected, privateObject.Invoke("GetSafeFilename", incorrect));
         }
     }
 }

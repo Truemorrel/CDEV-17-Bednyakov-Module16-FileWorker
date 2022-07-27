@@ -15,7 +15,7 @@ namespace FileWorker.Tests
             string expected = @"couple'`_#_words$%,.___+with,._1234___=_delimeters";
             var fileWorker = new FileWorker();
 
-            PrivateObject privateObject = new PrivateObject(fileWorker);
+            PrivateObject privateObject = new PrivateObject(fileWorker, new PrivateType(typeof(FileWorker)));
             NUnit.Framework.Assert.AreEqual(expected, privateObject.Invoke("GetSafeFilename", incorrect));
         }
     }
